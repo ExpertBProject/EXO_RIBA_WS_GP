@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EXO_WS_GP" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EXO_WS_GP" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PedidoCompraRegistrarLinea">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alto" type="xs:double" />
+      <xs:element minOccurs="0" name="Ancho" type="xs:double" />
+      <xs:element minOccurs="0" name="CantidadReal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CantidadSeleccionada" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Largo" type="xs:double" />
+      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumInterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumLinea" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Peso" type="xs:double" />
+      <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Resultado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ubicacion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PedidoCompraRegistrarLinea" nillable="true" type="tns:PedidoCompraRegistrarLinea" />
+  <xs:complexType name="Traslado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Almacen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoArticulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroPicking" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PickingLinea" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UbicacionDestino" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UbicacionOrigen" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Traslado" nillable="true" type="tns:Traslado" />
+  <xs:complexType name="GenerarPicking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bultos" nillable="true" type="tns:ArrayOfBultosPicking" />
+      <xs:element minOccurs="0" name="Lineas" nillable="true" type="tns:ArrayOfLineasPicking" />
+      <xs:element minOccurs="0" name="NumeroPicking" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Palets" nillable="true" type="tns:ArrayOfPaletsPicking" />
+      <xs:element minOccurs="0" name="Resultado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ubicacion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenerarPicking" nillable="true" type="tns:GenerarPicking" />
+  <xs:complexType name="ArrayOfBultosPicking">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BultosPicking" nillable="true" type="tns:BultosPicking" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBultosPicking" nillable="true" type="tns:ArrayOfBultosPicking" />
+  <xs:complexType name="BultosPicking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Articulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bulto" type="xs:int" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:double" />
+      <xs:element minOccurs="0" name="LineaPicking" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BultosPicking" nillable="true" type="tns:BultosPicking" />
+  <xs:complexType name="ArrayOfLineasPicking">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LineasPicking" nillable="true" type="tns:LineasPicking" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLineasPicking" nillable="true" type="tns:ArrayOfLineasPicking" />
+  <xs:complexType name="LineasPicking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Articulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:double" />
+      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PickingLinea" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LineasPicking" nillable="true" type="tns:LineasPicking" />
+  <xs:complexType name="ArrayOfPaletsPicking">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaletsPicking" nillable="true" type="tns:PaletsPicking" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaletsPicking" nillable="true" type="tns:ArrayOfPaletsPicking" />
+  <xs:complexType name="PaletsPicking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Altura" type="xs:double" />
+      <xs:element minOccurs="0" name="Palet" type="xs:int" />
+      <xs:element minOccurs="0" name="Peso" type="xs:double" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Volumen" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaletsPicking" nillable="true" type="tns:PaletsPicking" />
+  <xs:complexType name="OperacionEntradaSalida">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lineas" nillable="true" type="tns:ArrayOfArticulo" />
+      <xs:element minOccurs="0" name="Resultado" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperacionEntradaSalida" nillable="true" type="tns:OperacionEntradaSalida" />
+  <xs:complexType name="ArrayOfArticulo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Articulo" nillable="true" type="tns:Articulo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArticulo" nillable="true" type="tns:ArrayOfArticulo" />
+  <xs:complexType name="Articulo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alto" type="xs:double" />
+      <xs:element minOccurs="0" name="Ancho" type="xs:double" />
+      <xs:element minOccurs="0" name="Articulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:double" />
+      <xs:element minOccurs="0" name="CantidadUDM" type="xs:double" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EsLote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Largo" type="xs:double" />
+      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Peso" type="xs:double" />
+      <xs:element minOccurs="0" name="Resultado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ubicacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnidadMedida" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Articulo" nillable="true" type="tns:Articulo" />
+  <xs:complexType name="OperacionTraslado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lineas" nillable="true" type="tns:ArrayOfLineasTraslado" />
+      <xs:element minOccurs="0" name="NumeroSolTraslado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroSolTrasladoInterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Resultado" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperacionTraslado" nillable="true" type="tns:OperacionTraslado" />
+  <xs:complexType name="ArrayOfLineasTraslado">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LineasTraslado" nillable="true" type="tns:LineasTraslado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLineasTraslado" nillable="true" type="tns:ArrayOfLineasTraslado" />
+  <xs:complexType name="LineasTraslado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Articulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:double" />
+      <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroLinea" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UbicacionDestino" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UbicacionOrigen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnidadMedida" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LineasTraslado" nillable="true" type="tns:LineasTraslado" />
+  <xs:complexType name="ListasRecuentoInventarioCabecera">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lineas" nillable="true" type="tns:ArrayOfListasRecuentoInventarioDetalle" />
+      <xs:element minOccurs="0" name="NumeroInterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Resultado" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListasRecuentoInventarioCabecera" nillable="true" type="tns:ListasRecuentoInventarioCabecera" />
+  <xs:complexType name="ArrayOfListasRecuentoInventarioDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListasRecuentoInventarioDetalle" nillable="true" type="tns:ListasRecuentoInventarioDetalle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListasRecuentoInventarioDetalle" nillable="true" type="tns:ArrayOfListasRecuentoInventarioDetalle" />
+  <xs:complexType name="ListasRecuentoInventarioDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Articulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CantidadContada" type="xs:double" />
+      <xs:element minOccurs="0" name="CantidadTeorica" type="xs:double" />
+      <xs:element minOccurs="0" name="CodUbicacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroLinea" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Resultado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ubicacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Verificado" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListasRecuentoInventarioDetalle" nillable="true" type="tns:ListasRecuentoInventarioDetalle" />
+</xs:schema>

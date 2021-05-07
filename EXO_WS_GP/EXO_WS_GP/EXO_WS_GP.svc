@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="EXO_WS_GP.Service1" CodeBehind="EXO_WS_GP.svc.vb" %>

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EXO_WS_GP", "EXO_WS_GP\EXO_WS_GP.vbproj", "{61D8BBA7-E680-4EDD-8C92-63323A962472}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TestWS", "TestWS\TestWS.vbproj", "{97434491-A433-4939-ABCE-AF95A652B1BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{61D8BBA7-E680-4EDD-8C92-63323A962472} = {61D8BBA7-E680-4EDD-8C92-63323A962472}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consultas", "Consultas", "{BCC760EC-81CE-4808-A1D5-75D837B0732E}"
+	ProjectSection(SolutionItems) = preProject
+		EXO_GP_Gestionar_En_Pick.sql = EXO_GP_Gestionar_En_Pick.sql
+		EXO_GP_PROPONGO_LOTE.sql = EXO_GP_PROPONGO_LOTE.sql
+		EXO_GP_PROPONGO_UBICACION.sql = EXO_GP_PROPONGO_UBICACION.sql
+		EXO_GP_TRABAJO_LISTA_PICKING.sql = EXO_GP_TRABAJO_LISTA_PICKING.sql
+		EXO_GP_TRABAJO_LISTA_PICKING_MULTIPLE.sql = EXO_GP_TRABAJO_LISTA_PICKING_MULTIPLE.sql
+		EXO_GP_TRABAJO_LISTA_TRASLADO.sql = EXO_GP_TRABAJO_LISTA_TRASLADO.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61D8BBA7-E680-4EDD-8C92-63323A962472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D8BBA7-E680-4EDD-8C92-63323A962472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D8BBA7-E680-4EDD-8C92-63323A962472}.Debug|x86.ActiveCfg = Debug|x86
+		{61D8BBA7-E680-4EDD-8C92-63323A962472}.Debug|x86.Build.0 = Debug|x86
+		{61D8BBA7-E680-4EDD-8C92-63323A962472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D8BBA7-E680-4EDD-8C92-63323A962472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61D8BBA7-E680-4EDD-8C92-63323A962472}.Release|x86.ActiveCfg = Release|x86
+		{61D8BBA7-E680-4EDD-8C92-63323A962472}.Release|x86.Build.0 = Release|x86
+		{97434491-A433-4939-ABCE-AF95A652B1BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97434491-A433-4939-ABCE-AF95A652B1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97434491-A433-4939-ABCE-AF95A652B1BB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{97434491-A433-4939-ABCE-AF95A652B1BB}.Debug|x86.Build.0 = Debug|Any CPU
+		{97434491-A433-4939-ABCE-AF95A652B1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97434491-A433-4939-ABCE-AF95A652B1BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97434491-A433-4939-ABCE-AF95A652B1BB}.Release|x86.ActiveCfg = Release|Any CPU
+		{97434491-A433-4939-ABCE-AF95A652B1BB}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IEXO_WS_GP_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://localhost:8083/EXO_WS_GP.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://localhost:8083/EXO_WS_GP.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://localhost:8083/EXO_WS_GP.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EXO_WS_GP" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IEXO_WS_GP_ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:ping" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:pingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_LoginUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_LoginUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_BasesDeDatos_InputMessage">
+    <wsdl:part name="parameters" element="tns:BasesDeDatos" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_BasesDeDatos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BasesDeDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_UbicacionesDelAlmacen_InputMessage">
+    <wsdl:part name="parameters" element="tns:UbicacionesDelAlmacen" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_UbicacionesDelAlmacen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UbicacionesDelAlmacenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_RecepcionMaterialesBuscador_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecepcionMaterialesBuscador" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_RecepcionMaterialesBuscador_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecepcionMaterialesBuscadorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_PedidoCompraRegistrarLinea_InputMessage">
+    <wsdl:part name="parameters" element="tns:PedidoCompraRegistrarLinea" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_PedidoCompraRegistrarLinea_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PedidoCompraRegistrarLineaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_PedidoCompraGenerar_InputMessage">
+    <wsdl:part name="parameters" element="tns:PedidoCompraGenerar" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_PedidoCompraGenerar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PedidoCompraGenerarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ListasPicking_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListasPicking" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ListasPicking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListasPickingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_UbicacionesDelAlmacenBahias_InputMessage">
+    <wsdl:part name="parameters" element="tns:UbicacionesDelAlmacenBahias" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_UbicacionesDelAlmacenBahias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UbicacionesDelAlmacenBahiasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DesglosePicking_InputMessage">
+    <wsdl:part name="parameters" element="tns:DesglosePicking" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DesglosePicking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DesglosePickingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_OperacionesTraslado_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperacionesTraslado" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_OperacionesTraslado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperacionesTrasladoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarPicking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarPicking" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarPicking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarPickingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ComprobarExisteArticulo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarExisteArticulo" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ComprobarExisteArticulo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarExisteArticuloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ComprobarArticuloSalida_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarArticuloSalida" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ComprobarArticuloSalida_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarArticuloSalidaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarDocumentoEntradaManual_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarDocumentoEntradaManual" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarDocumentoEntradaManual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarDocumentoEntradaManualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarDocumentoSalidaManual_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarDocumentoSalidaManual" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarDocumentoSalidaManual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarDocumentoSalidaManualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ListasSolicitudTraslado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListasSolicitudTraslado" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ListasSolicitudTraslado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListasSolicitudTrasladoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DesgloseSolicitudesTraslado_InputMessage">
+    <wsdl:part name="parameters" element="tns:DesgloseSolicitudesTraslado" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DesgloseSolicitudesTraslado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DesgloseSolicitudesTrasladoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarOperacionTraslado_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarOperacionTraslado" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarOperacionTraslado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarOperacionTrasladoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ComPruebaArticulo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComPruebaArticulo" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ComPruebaArticulo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComPruebaArticuloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zIniClassPedidoCompraRegistrarLinea_InputMessage">
+    <wsdl:part name="parameters" element="tns:zIniClassPedidoCompraRegistrarLinea" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zIniClassPedidoCompraRegistrarLinea_OutputMessage">
+    <wsdl:part name="parameters" element="tns:zIniClassPedidoCompraRegistrarLineaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zIniClassTraslados_InputMessage">
+    <wsdl:part name="parameters" element="tns:zIniClassTraslados" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zIniClassTraslados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:zIniClassTrasladosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zIniGenerarPicking_InputMessage">
+    <wsdl:part name="parameters" element="tns:zIniGenerarPicking" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zIniGenerarPicking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:zIniGenerarPickingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zOperacionEntradaSalida_InputMessage">
+    <wsdl:part name="parameters" element="tns:zOperacionEntradaSalida" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zOperacionEntradaSalida_OutputMessage">
+    <wsdl:part name="parameters" element="tns:zOperacionEntradaSalidaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_PedioCompraResumenFinalizar_InputMessage">
+    <wsdl:part name="parameters" element="tns:PedioCompraResumenFinalizar" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_PedioCompraResumenFinalizar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PedioCompraResumenFinalizarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zOperacionTraslado_InputMessage">
+    <wsdl:part name="parameters" element="tns:zOperacionTraslado" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zOperacionTraslado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:zOperacionTrasladoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarPicking2_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarPicking2" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarPicking2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarPicking2Response" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_PedidoCompraRegistrarLinea2_InputMessage">
+    <wsdl:part name="parameters" element="tns:PedidoCompraRegistrarLinea2" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_PedidoCompraRegistrarLinea2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PedidoCompraRegistrarLinea2Response" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarDraftEntrega_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarDraftEntrega" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarDraftEntrega_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarDraftEntregaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ConsultaStock_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaStock" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ConsultaStock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ListasPickingMultiple_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListasPickingMultiple" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ListasPickingMultiple_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListasPickingMultipleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DesglosePickingMultiple_InputMessage">
+    <wsdl:part name="parameters" element="tns:DesglosePickingMultiple" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DesglosePickingMultiple_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DesglosePickingMultipleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ListasRecuentoInventario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListasRecuentoInventario" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_ListasRecuentoInventario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListasRecuentoInventarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DesgloseRecuentoInventario_InputMessage">
+    <wsdl:part name="parameters" element="tns:DesgloseRecuentoInventario" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DesgloseRecuentoInventario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DesgloseRecuentoInventarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zListasRecuentoInventarioCabecera_InputMessage">
+    <wsdl:part name="parameters" element="tns:zListasRecuentoInventarioCabecera" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zListasRecuentoInventarioCabecera_OutputMessage">
+    <wsdl:part name="parameters" element="tns:zListasRecuentoInventarioCabeceraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zListasRecuentoInventarioDetalle_InputMessage">
+    <wsdl:part name="parameters" element="tns:zListasRecuentoInventarioDetalle" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_zListasRecuentoInventarioDetalle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:zListasRecuentoInventarioDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarRecuentoInventario_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarRecuentoInventario" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_GenerarRecuentoInventario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarRecuentoInventarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_RecuentoInventarioMarcarFinalizado_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuentoInventarioMarcarFinalizado" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_RecuentoInventarioMarcarFinalizado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuentoInventarioMarcarFinalizadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_CompruebaLote_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompruebaLote" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_CompruebaLote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompruebaLoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_OperacionesTrasladoUbicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperacionesTrasladoUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_OperacionesTrasladoUbicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperacionesTrasladoUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_CompruebaUbicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompruebaUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_CompruebaUbicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompruebaUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEXO_WS_GP">
+    <wsdl:operation name="ping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ping" message="tns:IEXO_WS_GP_ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/pingResponse" message="tns:IEXO_WS_GP_ping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/LoginUsuario" message="tns:IEXO_WS_GP_LoginUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/LoginUsuarioResponse" message="tns:IEXO_WS_GP_LoginUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BasesDeDatos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/BasesDeDatos" message="tns:IEXO_WS_GP_BasesDeDatos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/BasesDeDatosResponse" message="tns:IEXO_WS_GP_BasesDeDatos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UbicacionesDelAlmacen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/UbicacionesDelAlmacen" message="tns:IEXO_WS_GP_UbicacionesDelAlmacen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/UbicacionesDelAlmacenResponse" message="tns:IEXO_WS_GP_UbicacionesDelAlmacen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecepcionMaterialesBuscador">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/RecepcionMaterialesBuscador" message="tns:IEXO_WS_GP_RecepcionMaterialesBuscador_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/RecepcionMaterialesBuscadorResponse" message="tns:IEXO_WS_GP_RecepcionMaterialesBuscador_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PedidoCompraRegistrarLinea">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/PedidoCompraRegistrarLinea" message="tns:IEXO_WS_GP_PedidoCompraRegistrarLinea_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/PedidoCompraRegistrarLineaResponse" message="tns:IEXO_WS_GP_PedidoCompraRegistrarLinea_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PedidoCompraGenerar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/PedidoCompraGenerar" message="tns:IEXO_WS_GP_PedidoCompraGenerar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/PedidoCompraGenerarResponse" message="tns:IEXO_WS_GP_PedidoCompraGenerar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListasPicking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ListasPicking" message="tns:IEXO_WS_GP_ListasPicking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/ListasPickingResponse" message="tns:IEXO_WS_GP_ListasPicking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UbicacionesDelAlmacenBahias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/UbicacionesDelAlmacenBahias" message="tns:IEXO_WS_GP_UbicacionesDelAlmacenBahias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/UbicacionesDelAlmacenBahiasResponse" message="tns:IEXO_WS_GP_UbicacionesDelAlmacenBahias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DesglosePicking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/DesglosePicking" message="tns:IEXO_WS_GP_DesglosePicking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/DesglosePickingResponse" message="tns:IEXO_WS_GP_DesglosePicking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperacionesTraslado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/OperacionesTraslado" message="tns:IEXO_WS_GP_OperacionesTraslado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/OperacionesTrasladoResponse" message="tns:IEXO_WS_GP_OperacionesTraslado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarPicking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarPicking" message="tns:IEXO_WS_GP_GenerarPicking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarPickingResponse" message="tns:IEXO_WS_GP_GenerarPicking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarExisteArticulo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ComprobarExisteArticulo" message="tns:IEXO_WS_GP_ComprobarExisteArticulo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/ComprobarExisteArticuloResponse" message="tns:IEXO_WS_GP_ComprobarExisteArticulo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarArticuloSalida">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ComprobarArticuloSalida" message="tns:IEXO_WS_GP_ComprobarArticuloSalida_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/ComprobarArticuloSalidaResponse" message="tns:IEXO_WS_GP_ComprobarArticuloSalida_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarDocumentoEntradaManual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarDocumentoEntradaManual" message="tns:IEXO_WS_GP_GenerarDocumentoEntradaManual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarDocumentoEntradaManualResponse" message="tns:IEXO_WS_GP_GenerarDocumentoEntradaManual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarDocumentoSalidaManual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarDocumentoSalidaManual" message="tns:IEXO_WS_GP_GenerarDocumentoSalidaManual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarDocumentoSalidaManualResponse" message="tns:IEXO_WS_GP_GenerarDocumentoSalidaManual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListasSolicitudTraslado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ListasSolicitudTraslado" message="tns:IEXO_WS_GP_ListasSolicitudTraslado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/ListasSolicitudTrasladoResponse" message="tns:IEXO_WS_GP_ListasSolicitudTraslado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DesgloseSolicitudesTraslado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/DesgloseSolicitudesTraslado" message="tns:IEXO_WS_GP_DesgloseSolicitudesTraslado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/DesgloseSolicitudesTrasladoResponse" message="tns:IEXO_WS_GP_DesgloseSolicitudesTraslado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarOperacionTraslado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarOperacionTraslado" message="tns:IEXO_WS_GP_GenerarOperacionTraslado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarOperacionTrasladoResponse" message="tns:IEXO_WS_GP_GenerarOperacionTraslado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComPruebaArticulo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ComPruebaArticulo" message="tns:IEXO_WS_GP_ComPruebaArticulo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/ComPruebaArticuloResponse" message="tns:IEXO_WS_GP_ComPruebaArticulo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="zIniClassPedidoCompraRegistrarLinea">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/zIniClassPedidoCompraRegistrarLinea" message="tns:IEXO_WS_GP_zIniClassPedidoCompraRegistrarLinea_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/zIniClassPedidoCompraRegistrarLineaResponse" message="tns:IEXO_WS_GP_zIniClassPedidoCompraRegistrarLinea_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="zIniClassTraslados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/zIniClassTraslados" message="tns:IEXO_WS_GP_zIniClassTraslados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/zIniClassTrasladosResponse" message="tns:IEXO_WS_GP_zIniClassTraslados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="zIniGenerarPicking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/zIniGenerarPicking" message="tns:IEXO_WS_GP_zIniGenerarPicking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/zIniGenerarPickingResponse" message="tns:IEXO_WS_GP_zIniGenerarPicking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="zOperacionEntradaSalida">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/zOperacionEntradaSalida" message="tns:IEXO_WS_GP_zOperacionEntradaSalida_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/zOperacionEntradaSalidaResponse" message="tns:IEXO_WS_GP_zOperacionEntradaSalida_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PedioCompraResumenFinalizar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/PedioCompraResumenFinalizar" message="tns:IEXO_WS_GP_PedioCompraResumenFinalizar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/PedioCompraResumenFinalizarResponse" message="tns:IEXO_WS_GP_PedioCompraResumenFinalizar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="zOperacionTraslado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/zOperacionTraslado" message="tns:IEXO_WS_GP_zOperacionTraslado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/zOperacionTrasladoResponse" message="tns:IEXO_WS_GP_zOperacionTraslado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarPicking2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarPicking2" message="tns:IEXO_WS_GP_GenerarPicking2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarPicking2Response" message="tns:IEXO_WS_GP_GenerarPicking2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PedidoCompraRegistrarLinea2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/PedidoCompraRegistrarLinea2" message="tns:IEXO_WS_GP_PedidoCompraRegistrarLinea2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/PedidoCompraRegistrarLinea2Response" message="tns:IEXO_WS_GP_PedidoCompraRegistrarLinea2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarDraftEntrega">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarDraftEntrega" message="tns:IEXO_WS_GP_GenerarDraftEntrega_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarDraftEntregaResponse" message="tns:IEXO_WS_GP_GenerarDraftEntrega_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaStock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ConsultaStock" message="tns:IEXO_WS_GP_ConsultaStock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/ConsultaStockResponse" message="tns:IEXO_WS_GP_ConsultaStock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListasPickingMultiple">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ListasPickingMultiple" message="tns:IEXO_WS_GP_ListasPickingMultiple_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/ListasPickingMultipleResponse" message="tns:IEXO_WS_GP_ListasPickingMultiple_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DesglosePickingMultiple">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/DesglosePickingMultiple" message="tns:IEXO_WS_GP_DesglosePickingMultiple_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/DesglosePickingMultipleResponse" message="tns:IEXO_WS_GP_DesglosePickingMultiple_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListasRecuentoInventario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ListasRecuentoInventario" message="tns:IEXO_WS_GP_ListasRecuentoInventario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/ListasRecuentoInventarioResponse" message="tns:IEXO_WS_GP_ListasRecuentoInventario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DesgloseRecuentoInventario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/DesgloseRecuentoInventario" message="tns:IEXO_WS_GP_DesgloseRecuentoInventario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/DesgloseRecuentoInventarioResponse" message="tns:IEXO_WS_GP_DesgloseRecuentoInventario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="zListasRecuentoInventarioCabecera">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/zListasRecuentoInventarioCabecera" message="tns:IEXO_WS_GP_zListasRecuentoInventarioCabecera_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/zListasRecuentoInventarioCabeceraResponse" message="tns:IEXO_WS_GP_zListasRecuentoInventarioCabecera_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="zListasRecuentoInventarioDetalle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/zListasRecuentoInventarioDetalle" message="tns:IEXO_WS_GP_zListasRecuentoInventarioDetalle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/zListasRecuentoInventarioDetalleResponse" message="tns:IEXO_WS_GP_zListasRecuentoInventarioDetalle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarRecuentoInventario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarRecuentoInventario" message="tns:IEXO_WS_GP_GenerarRecuentoInventario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/GenerarRecuentoInventarioResponse" message="tns:IEXO_WS_GP_GenerarRecuentoInventario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuentoInventarioMarcarFinalizado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/RecuentoInventarioMarcarFinalizado" message="tns:IEXO_WS_GP_RecuentoInventarioMarcarFinalizado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/RecuentoInventarioMarcarFinalizadoResponse" message="tns:IEXO_WS_GP_RecuentoInventarioMarcarFinalizado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompruebaLote">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/CompruebaLote" message="tns:IEXO_WS_GP_CompruebaLote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/CompruebaLoteResponse" message="tns:IEXO_WS_GP_CompruebaLote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperacionesTrasladoUbicacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/OperacionesTrasladoUbicacion" message="tns:IEXO_WS_GP_OperacionesTrasladoUbicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/OperacionesTrasladoUbicacionResponse" message="tns:IEXO_WS_GP_OperacionesTrasladoUbicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompruebaUbicacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/CompruebaUbicacion" message="tns:IEXO_WS_GP_CompruebaUbicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/CompruebaUbicacionResponse" message="tns:IEXO_WS_GP_CompruebaUbicacion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IEXO_WS_GP" type="tns:IEXO_WS_GP">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IEXO_WS_GP_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ping">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginUsuario">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/LoginUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BasesDeDatos">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/BasesDeDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UbicacionesDelAlmacen">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/UbicacionesDelAlmacen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecepcionMaterialesBuscador">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/RecepcionMaterialesBuscador" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PedidoCompraRegistrarLinea">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/PedidoCompraRegistrarLinea" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PedidoCompraGenerar">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/PedidoCompraGenerar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListasPicking">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/ListasPicking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UbicacionesDelAlmacenBahias">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/UbicacionesDelAlmacenBahias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesglosePicking">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/DesglosePicking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OperacionesTraslado">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/OperacionesTraslado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarPicking">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/GenerarPicking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarExisteArticulo">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/ComprobarExisteArticulo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarArticuloSalida">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/ComprobarArticuloSalida" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarDocumentoEntradaManual">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/GenerarDocumentoEntradaManual" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarDocumentoSalidaManual">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/GenerarDocumentoSalidaManual" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListasSolicitudTraslado">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/ListasSolicitudTraslado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesgloseSolicitudesTraslado">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/DesgloseSolicitudesTraslado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarOperacionTraslado">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/GenerarOperacionTraslado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComPruebaArticulo">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/ComPruebaArticulo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="zIniClassPedidoCompraRegistrarLinea">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/zIniClassPedidoCompraRegistrarLinea" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="zIniClassTraslados">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/zIniClassTraslados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="zIniGenerarPicking">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/zIniGenerarPicking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="zOperacionEntradaSalida">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/zOperacionEntradaSalida" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PedioCompraResumenFinalizar">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/PedioCompraResumenFinalizar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="zOperacionTraslado">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/zOperacionTraslado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarPicking2">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/GenerarPicking2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PedidoCompraRegistrarLinea2">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/PedidoCompraRegistrarLinea2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarDraftEntrega">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/GenerarDraftEntrega" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaStock">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/ConsultaStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListasPickingMultiple">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/ListasPickingMultiple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesglosePickingMultiple">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/DesglosePickingMultiple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListasRecuentoInventario">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/ListasRecuentoInventario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesgloseRecuentoInventario">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/DesgloseRecuentoInventario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="zListasRecuentoInventarioCabecera">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/zListasRecuentoInventarioCabecera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="zListasRecuentoInventarioDetalle">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/zListasRecuentoInventarioDetalle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarRecuentoInventario">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/GenerarRecuentoInventario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuentoInventarioMarcarFinalizado">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/RecuentoInventarioMarcarFinalizado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompruebaLote">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/CompruebaLote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OperacionesTrasladoUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/OperacionesTrasladoUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompruebaUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/CompruebaUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IEXO_WS_GP" binding="tns:BasicHttpBinding_IEXO_WS_GP">
+      <soap12:address location="https://localhost:8083/EXO_WS_GP.svc/http" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://localhost:8083/EXO_WS_GP.svc/http</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
