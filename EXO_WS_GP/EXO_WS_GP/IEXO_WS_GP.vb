@@ -131,6 +131,12 @@ Public Interface IEXO_WS_GP
     <OperationContract()>
     Function CompruebaUbicacion(BaseDatos As String, Usuario As String, Password As String, CodArticulo As String, Ubicacion As String, EsLote As String) As String
 
+    <OperationContract()>
+    Function CompruebaLoteReubicacion(BaseDatos As String, Usuario As String, Password As String, CodArticulo As String, Lote As String, Ubicacion As String) As String
+
+    <OperationContract()>
+    Function DetalleLoteLineaPicking(BaseDatos As String, Usuario As String, Password As String, NumeroPicking As String, LineaPicking As String) As String
+
 #End Region
 
 End Interface
@@ -184,6 +190,15 @@ Public Class CompruebaLote
     <DataMember()>
     Public UnidadMedida As String
 
+End Class
+
+<DataContract()>
+<Serializable()>
+Public Class CompruebaLoteUbicaciones
+    <DataMember()>
+    Public Resultado As String
+    <DataMember()>
+    Public CompruebaLote As List(Of CompruebaLote)
 End Class
 
 <DataContract()>

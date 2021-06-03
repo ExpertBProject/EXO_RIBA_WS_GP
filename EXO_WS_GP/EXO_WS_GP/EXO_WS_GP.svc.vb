@@ -174,6 +174,15 @@ Public Class Service1
         Return CompruebaUbicacion(BaseDatos, Usuario, Password, CodArticulo, Ubicacion, EsLote, log)
     End Function
 
+    Function CompruebaLoteReubicacion(BaseDatos As String, Usuario As String, Password As String, CodArticulo As String, Lote As String, Ubicacion As String) As String Implements IEXO_WS_GP.CompruebaLoteReubicacion
+        Return CompruebaLoteReubicacion(BaseDatos, Usuario, Password, CodArticulo, Lote, Ubicacion, log)
+    End Function
+
+    Function DetalleLoteLineaPicking(BaseDatos As String, Usuario As String, Password As String, NumeroPicking As String, LineaPicking As String) As String Implements IEXO_WS_GP.DetalleLoteLineaPicking
+        Return DetalleLoteLineaPicking(BaseDatos, Usuario, Password, NumeroPicking, LineaPicking, log)
+    End Function
+
+
 #End Region
 
 #Region "Inicializaciones"
@@ -1319,6 +1328,95 @@ Public Class Service1
 
     End Function
 
+    Private Function CompruebaLoteReubicacion(BaseDatos As String, Usuario As String, Password As String, CodArticulo As String, Lote As String, Ubicacion As String, log As EXO_Log.EXO_Log) As String
+
+        Dim res As String = ""
+        Dim oPic As CompruebaLote = New CompruebaLote
+
+        Dim olistpic As List(Of CompruebaLote) = New List(Of CompruebaLote)
+
+        Dim oCLR As CompruebaLoteUbicaciones = New CompruebaLoteUbicaciones
+
+
+        Dim Esprimero As Boolean = True
+
+        Dim oCompany As SAPbobsCOM.Company
+        oCompany = New SAPbobsCOM.Company
+        oCompany = conectaDI(BaseDatos, Usuario, Password)
+
+
+        Dim rs As SAPbobsCOM.Recordset = Nothing
+
+        Try
+
+            'hacer consulta al sql y y rellenar el listado
+            Dim query As String = ""
+
+            query = " Select  COALESCE(T6.""BinCode"",'') BinCode,T4.""DistNumber"",T4.""ItemCode"",t5.""OnHandQty"",COALESCE(T7.""NumInSale"",1) NUMPERMSR,T7.""ItemName"",T7.""SalUnitMsr"" " +
+        " FROM ""OBTN"" T4 " +
+        " INNER Join ""OBBQ"" T5 ON T4.""AbsEntry""=T5.""SnBMDAbs"" " +
+        " INNER Join ""OBIN"" T6 ON T5.""BinAbs""=T6.""AbsEntry"" " +
+         " INNER Join ""OITM"" T7 ON T7.""ItemCode""=T4.""ItemCode"" " +
+            " WHERE T4.""DistNumber""='" + Lote + "' and t5.""OnHandQty"">0 "
+
+            If CodArticulo <> "" Then
+                query = query + " and t4.""ItemCode""='" + CodArticulo + "'"
+            End If
+
+            If Ubicacion <> "" Then
+                query = query + " and  T6.""BinCode""='" + Ubicacion + "'"
+            End If
+
+
+            rs = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
+
+            rs.DoQuery(query)
+
+            If rs.RecordCount > 0 Then
+
+                rs.MoveFirst()
+
+                While (Not rs.EoF)
+
+                    oPic = New CompruebaLote
+                    oCLR.Resultado = "Ok"
+                    oPic.Resultado = "Ok"
+                    oPic.Cantidad = rs.Fields.Item("OnHandQty").Value
+                    oPic.Lote = rs.Fields.Item("DistNumber").Value
+                    oPic.Articulo = rs.Fields.Item("ItemCode").Value
+                    oPic.Ubicacion = rs.Fields.Item("BinCode").Value
+                    oPic.CantidadUDM = CType(rs.Fields.Item("NUMPERMSR").Value.ToString, Double)
+                    oPic.Descripcion = rs.Fields.Item("ItemName").Value.ToString
+                    oPic.UnidadMedida = rs.Fields.Item("SalUnitMsr").Value.ToString
+
+                    olistpic.Add(oPic)
+
+                    rs.MoveNext()
+                End While
+                oCLR.CompruebaLote = olistpic
+            Else
+
+                oCLR.Resultado = "Error: El lote no existe."
+
+            End If
+
+        Catch ex As Exception
+            log.escribeMensaje(ex.Message, EXO_Log.EXO_Log.Tipo.error)
+            oCLR.Resultado = "Error: " + ex.Message
+        Finally
+            '   EXO_CleanCOM.CLiberaCOM.liberaCOM(CType(oCompany, Object))
+            EXO_CleanCOM.CLiberaCOM.liberaCOM(CType(rs, Object))
+        End Try
+
+        'liberaCompañia(compañia)
+        'conexiones.DisconnectSQLServer()
+
+        Dim js As New JavaScriptSerializer()
+        res = js.Serialize(oCLR)
+
+        Return res
+
+    End Function
 
     Private Function ComPruebaArticulo(BaseDatos As String, Usuario As String, Password As String, CodArticulo As String, CodEan As String, EsLote As String, log As EXO_Log.EXO_Log) As String
 
@@ -2577,6 +2675,81 @@ Public Class Service1
 
     End Function
 
+    Private Function DetalleLoteLineaPicking(BaseDatos As String, Usuario As String, Password As String, NumeroPicking As String, LineaPicking As String, log As EXO_Log.EXO_Log) As String
+
+        Dim res As String = ""
+        Dim oPic As CompruebaArticulo = New CompruebaArticulo
+
+        Dim oList As List(Of CompruebaArticulo) = New List(Of CompruebaArticulo)
+
+        Dim Esprimero As Boolean = True
+
+        Dim oCompany As SAPbobsCOM.Company
+        oCompany = New SAPbobsCOM.Company
+        oCompany = conectaDI(BaseDatos, Usuario, Password)
+        EstablecerAlmacen(oCompany)
+        Dim CodEanConversion As String = ""
+        Dim NumLote As String = ""
+        Dim rs As SAPbobsCOM.Recordset = Nothing
+
+        Try
+
+            'hacer consulta al sql y y rellenar el listado
+            Dim query As String = ""
+
+
+
+            query = " 	SELECT T1.""Quantity"" ""Cantidad"", " +
+               " T3.""BatchNum"" ""BatchNum"" " +
+                " FROM ""OWTR"" T0 " +
+                " INNER JOIN ""WTR1"" T1 ON T0.""DocEntry"" = T1.""DocEntry"" " +
+                " INNER JOIN ""OITM"" TArt on TArt.""ItemCode"" = T1.""ItemCode"" " +
+                " INNER JOIN ""PKL1"" T2 ON T2.""AbsEntry"" = T0.""U_EXO_NUMPIC"" AND T2.""PickEntry"" = T0.""U_EXO_LINPIC"" " +
+                " INNER JOIN ""IBT1"" T3 ON T3.""BaseType"" = T1.""ObjType"" And T3.""BaseEntry"" = T1.""DocEntry"" And T3.""BaseLinNum"" = T1.""LineNum"" " +
+                " WHERE T0.""U_EXO_NUMPIC"" = '" + NumeroPicking + "' AND t0.""U_EXO_LINPIC""='" + LineaPicking + "' "
+
+            rs = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
+
+            rs.DoQuery(query)
+
+            If rs.RecordCount > 0 Then
+
+                rs.MoveFirst()
+
+                While (Not rs.EoF)
+
+                    oPic = New CompruebaArticulo
+
+                    oPic.Resultado = "Ok"
+                    oPic.Cantidad = CType(rs.Fields.Item("Cantidad").Value, Double)
+                    oPic.Lote = rs.Fields.Item("BatchNum").Value
+                    oList.Add(oPic)
+                    rs.MoveNext()
+                End While
+
+            Else
+
+                oPic.Resultado = "Linea sin lote o no asignado."
+                oList.Add(oPic)
+            End If
+
+        Catch ex As Exception
+            log.escribeMensaje(ex.Message, EXO_Log.EXO_Log.Tipo.error)
+            oPic.Resultado = "Error: " + ex.Message
+        Finally
+            '   EXO_CleanCOM.CLiberaCOM.liberaCOM(CType(oCompany, Object))
+            EXO_CleanCOM.CLiberaCOM.liberaCOM(CType(rs, Object))
+        End Try
+
+        'liberaCompañia(compañia)
+        'conexiones.DisconnectSQLServer()
+
+        Dim js As New JavaScriptSerializer()
+        res = js.Serialize(oList)
+
+        Return res
+
+    End Function
 
 #End Region
 

@@ -655,4 +655,41 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CompruebaLoteReubicacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BaseDatos" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CodArticulo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Lote" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Ubicacion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompruebaLoteReubicacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompruebaLoteReubicacionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetalleLoteLineaPicking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BaseDatos" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NumeroPicking" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LineaPicking" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetalleLoteLineaPickingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DetalleLoteLineaPickingResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

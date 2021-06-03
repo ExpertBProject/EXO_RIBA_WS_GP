@@ -48,7 +48,7 @@ Public Class Form1
         Dim cliente As WS_GP.EXO_WS_GPClient = New WS_GP.EXO_WS_GPClient
         Dim respuestas As String = ""
 
-        respuestas = cliente.LoginUsuario("ALEX_BANKINTER", "mperiz", "M@rt1nN1c0")
+        respuestas = cliente.LoginUsuario("SBORIBAWOODSL", "mperiz", "M@rt1nN1c0")
         MessageBox.Show(respuestas)
 
     End Sub
@@ -527,6 +527,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button28_Click(sender As Object, e As EventArgs) Handles Button28.Click
+
         Dim cliente As WS_GP.EXO_WS_GPClient = New WS_GP.EXO_WS_GPClient
         Dim respuestas As String = ""
 
@@ -534,7 +535,8 @@ Public Class Form1
         'respuestas = cliente.CompruebaLote("DEMO_SBO", "mperiz", "M@rt1nN1c0", "000002", "AS1", "")
 
         '{"Resultado":"Ok","Cantidad":103,"Lote":"AS1","Articulo":"000002","Ubicacion":"02P01E02"}
-        respuestas = cliente.CompruebaLote("DEMO_SBO", "mperiz", "M@rt1nN1c0", "", "AS1", "02P01E02")
+        'respuestas = cliente.CompruebaLote("DEMO_SBO", "mperiz", "M@rt1nN1c0", "", "AS1", "02P01E02")
+        respuestas = cliente.CompruebaLoteReubicacion("SBORIBAWOODSL", "mperiz", "M@rt1nN1c0", "", "510266-6", "")
 
         MessageBox.Show(respuestas)
     End Sub
@@ -548,6 +550,8 @@ Public Class Form1
 
         '{"Resultado":"Ok","Cantidad":103,"Lote":"AS1","Articulo":"000002","Ubicacion":"02P01E02"}
         respuestas = cliente.CompruebaUbicacion("DEMO_SBO", "mperiz", "M@rt1nN1c0", "000002", "02P01E02", "Y")
+
+
 
         MessageBox.Show(respuestas)
     End Sub
@@ -579,6 +583,21 @@ Public Class Form1
         Dim JSON As String = sr.ReadToEnd()
 
         respuestas = cliente.OperacionesTrasladoUbicacion(JSON, "DEMO_SBO", "mperiz", "M@rt1nN1c0")
+        MessageBox.Show(respuestas)
+    End Sub
+
+    Private Sub Button31_Click(sender As Object, e As EventArgs) Handles Button31.Click
+        Dim cliente As WS_GP.EXO_WS_GPClient = New WS_GP.EXO_WS_GPClient
+        Dim respuestas As String = ""
+
+
+        'respuestas = cliente.CompruebaLote("DEMO_SBO", "mperiz", "M@rt1nN1c0", "000002", "AS1", "")
+
+        '{"Resultado":"Ok","Cantidad":103,"Lote":"AS1","Articulo":"000002","Ubicacion":"02P01E02"}
+        respuestas = cliente.DetalleLoteLineaPicking("DEMO_SBO", "mperiz", "M@rt1nN1c0", "48", "0")
+
+
+
         MessageBox.Show(respuestas)
     End Sub
 End Class

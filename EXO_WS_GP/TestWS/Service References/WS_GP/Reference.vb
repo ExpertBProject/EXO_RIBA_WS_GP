@@ -1901,6 +1901,18 @@ Namespace WS_GP
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IEXO_WS_GP/CompruebaUbicacion", ReplyAction:="http://tempuri.org/IEXO_WS_GP/CompruebaUbicacionResponse")>  _
         Function CompruebaUbicacionAsync(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal CodArticulo As String, ByVal Ubicacion As String, ByVal EsLote As String) As System.Threading.Tasks.Task(Of String)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IEXO_WS_GP/CompruebaLoteReubicacion", ReplyAction:="http://tempuri.org/IEXO_WS_GP/CompruebaLoteReubicacionResponse")>  _
+        Function CompruebaLoteReubicacion(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal CodArticulo As String, ByVal Lote As String, ByVal Ubicacion As String) As String
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IEXO_WS_GP/CompruebaLoteReubicacion", ReplyAction:="http://tempuri.org/IEXO_WS_GP/CompruebaLoteReubicacionResponse")>  _
+        Function CompruebaLoteReubicacionAsync(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal CodArticulo As String, ByVal Lote As String, ByVal Ubicacion As String) As System.Threading.Tasks.Task(Of String)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IEXO_WS_GP/DetalleLoteLineaPicking", ReplyAction:="http://tempuri.org/IEXO_WS_GP/DetalleLoteLineaPickingResponse")>  _
+        Function DetalleLoteLineaPicking(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal NumeroPicking As String, ByVal LineaPicking As String) As String
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IEXO_WS_GP/DetalleLoteLineaPicking", ReplyAction:="http://tempuri.org/IEXO_WS_GP/DetalleLoteLineaPickingResponse")>  _
+        Function DetalleLoteLineaPickingAsync(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal NumeroPicking As String, ByVal LineaPicking As String) As System.Threading.Tasks.Task(Of String)
     End Interface
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
@@ -2260,6 +2272,22 @@ Namespace WS_GP
         
         Public Function CompruebaUbicacionAsync(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal CodArticulo As String, ByVal Ubicacion As String, ByVal EsLote As String) As System.Threading.Tasks.Task(Of String) Implements WS_GP.IEXO_WS_GP.CompruebaUbicacionAsync
             Return MyBase.Channel.CompruebaUbicacionAsync(BaseDatos, Usuario, Password, CodArticulo, Ubicacion, EsLote)
+        End Function
+        
+        Public Function CompruebaLoteReubicacion(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal CodArticulo As String, ByVal Lote As String, ByVal Ubicacion As String) As String Implements WS_GP.IEXO_WS_GP.CompruebaLoteReubicacion
+            Return MyBase.Channel.CompruebaLoteReubicacion(BaseDatos, Usuario, Password, CodArticulo, Lote, Ubicacion)
+        End Function
+        
+        Public Function CompruebaLoteReubicacionAsync(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal CodArticulo As String, ByVal Lote As String, ByVal Ubicacion As String) As System.Threading.Tasks.Task(Of String) Implements WS_GP.IEXO_WS_GP.CompruebaLoteReubicacionAsync
+            Return MyBase.Channel.CompruebaLoteReubicacionAsync(BaseDatos, Usuario, Password, CodArticulo, Lote, Ubicacion)
+        End Function
+        
+        Public Function DetalleLoteLineaPicking(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal NumeroPicking As String, ByVal LineaPicking As String) As String Implements WS_GP.IEXO_WS_GP.DetalleLoteLineaPicking
+            Return MyBase.Channel.DetalleLoteLineaPicking(BaseDatos, Usuario, Password, NumeroPicking, LineaPicking)
+        End Function
+        
+        Public Function DetalleLoteLineaPickingAsync(ByVal BaseDatos As String, ByVal Usuario As String, ByVal Password As String, ByVal NumeroPicking As String, ByVal LineaPicking As String) As System.Threading.Tasks.Task(Of String) Implements WS_GP.IEXO_WS_GP.DetalleLoteLineaPickingAsync
+            Return MyBase.Channel.DetalleLoteLineaPickingAsync(BaseDatos, Usuario, Password, NumeroPicking, LineaPicking)
         End Function
     End Class
 End Namespace

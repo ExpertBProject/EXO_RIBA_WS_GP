@@ -279,6 +279,18 @@
   <wsdl:message name="IEXO_WS_GP_CompruebaUbicacion_OutputMessage">
     <wsdl:part name="parameters" element="tns:CompruebaUbicacionResponse" />
   </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_CompruebaLoteReubicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompruebaLoteReubicacion" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_CompruebaLoteReubicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompruebaLoteReubicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DetalleLoteLineaPicking_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetalleLoteLineaPicking" />
+  </wsdl:message>
+  <wsdl:message name="IEXO_WS_GP_DetalleLoteLineaPicking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetalleLoteLineaPickingResponse" />
+  </wsdl:message>
   <wsdl:portType name="IEXO_WS_GP">
     <wsdl:operation name="ping">
       <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/ping" message="tns:IEXO_WS_GP_ping_InputMessage" />
@@ -443,6 +455,14 @@
     <wsdl:operation name="CompruebaUbicacion">
       <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/CompruebaUbicacion" message="tns:IEXO_WS_GP_CompruebaUbicacion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/CompruebaUbicacionResponse" message="tns:IEXO_WS_GP_CompruebaUbicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompruebaLoteReubicacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/CompruebaLoteReubicacion" message="tns:IEXO_WS_GP_CompruebaLoteReubicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/CompruebaLoteReubicacionResponse" message="tns:IEXO_WS_GP_CompruebaLoteReubicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetalleLoteLineaPicking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEXO_WS_GP/DetalleLoteLineaPicking" message="tns:IEXO_WS_GP_DetalleLoteLineaPicking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEXO_WS_GP/DetalleLoteLineaPickingResponse" message="tns:IEXO_WS_GP_DetalleLoteLineaPicking_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IEXO_WS_GP" type="tns:IEXO_WS_GP">
@@ -810,6 +830,24 @@
     </wsdl:operation>
     <wsdl:operation name="CompruebaUbicacion">
       <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/CompruebaUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompruebaLoteReubicacion">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/CompruebaLoteReubicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalleLoteLineaPicking">
+      <soap12:operation soapAction="http://tempuri.org/IEXO_WS_GP/DetalleLoteLineaPicking" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
